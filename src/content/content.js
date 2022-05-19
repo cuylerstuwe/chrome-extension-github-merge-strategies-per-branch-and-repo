@@ -12,7 +12,8 @@ const allowedMergeMethodLookup = {
 
 function discoverImplicitDefaultMergeMethodIfPresent(allowedMergeMethodLookup) {
     const allowedMergeMethodTuples = [...Object.entries(allowedMergeMethodLookup) || []]?.filter(([mergeMethod, isMergeMethodAllowed]) => isMergeMethodAllowed);
-    if(allowedMergeMethodTuples.length === 1) {
+    let isThereExactlyOneAllowedMergeMethod = allowedMergeMethodTuples.length === 1;
+    if(isThereExactlyOneAllowedMergeMethod) {
         return allowedMergeMethodTuples[0][0];
     }
     else {
