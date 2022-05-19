@@ -16,4 +16,12 @@ insertMergeBlockingStyleIfNotInserted({
     squash: true
 });
 
+function doesHaveMergeMethodsOnPage() {
+    return document.querySelectorAll(`.merge-message .select-menu-merge-method button[value]`)?.length >= 1;
+}
+
+function waitForMergeMethodsToBeInitiallyInserted() {
+
+}
+
 clickMergeMethod(defaultMergeMethod);

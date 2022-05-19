@@ -19,7 +19,7 @@ const MERGE_BLOCKING_STYLE_EL_ID = "mergeBlockingStyle";
 
 function insertMergeBlockingStyle(allowedMergeMethodLookup) {
 
-    document.head.insertAdjacentHTML(`beforeend`, `
+    document.body.insertAdjacentHTML(`beforeend`, `
         <style id="${MERGE_BLOCKING_STYLE_EL_ID}">
             ${
                 Object.entries(allowedMergeMethodLookup).filter(([_, isAllowed]) => isAllowed === false).map(([blockedMergeMethodName, _]) => {
@@ -27,7 +27,7 @@ function insertMergeBlockingStyle(allowedMergeMethodLookup) {
                     const styleDeclarations = `user-select: none; pointer-events: none; opacity: 0.6; cursor: not-allowed !important;`;
                     const note = `Disabled when merging into this branch.`;
                     return `${selector} { ${styleDeclarations} } ${selector}:after { content: "${note}" }`;
-                })
+                }).join("\n")
             }
         </style>
     `);

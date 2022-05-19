@@ -1,3 +1,2 @@
-const clickMergeMethod = (mergeMethodName) => document.querySelector(`.merge-message button[value='${mergeMethodName}']`)?.click();
-
+const clickMergeMethod = (mergeMethodName) => document.querySelector(`.merge-message .select-menu-merge-method button[value='${mergeMethodName}']`)?.click();
 export { clickMergeMethod };
