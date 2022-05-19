@@ -20,7 +20,7 @@ function discoverImplicitDefaultMergeMethodIfPresent(allowedMergeMethodLookup) {
     }
 }
 
-function scrapeBaseRef() {
+function scrapeTargetBranchName() {
     return document.querySelector(".js-pull-header-details .base-ref a span")?.innerText?.trim();
 }
 
@@ -45,8 +45,8 @@ async function waitForMergeMethodsToBeInitiallyInserted() {
 
 async function main() {
     await waitForMergeMethodsToBeInitiallyInserted();
-    const baseRef = scrapeBaseRef();
-    insertMergeBlockingStyleIfNotInserted(allowedMergeMethodLookup, baseRef);
+    const targetBranchName = scrapeTargetBranchName();
+    insertMergeBlockingStyleIfNotInserted(allowedMergeMethodLookup, targetBranchName);
     clickMergeMethod(discoverImplicitDefaultMergeMethodIfPresent(allowedMergeMethodLookup) ?? explicitDefaultMergeMethod);
 }
 
