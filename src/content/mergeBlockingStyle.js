@@ -19,7 +19,7 @@ const MERGE_BLOCKING_STYLE_EL_ID = "mergeBlockingStyle";
 
 function insertMergeBlockingStyle(allowedMergeMethodLookup) {
 
-    document.body.insertAdjacentHTML(`beforeend`, `
+    document.head.insertAdjacentHTML(`beforeend`, `
         <style id="${MERGE_BLOCKING_STYLE_EL_ID}">
             ${
                 Object.entries(allowedMergeMethodLookup).filter(([_, isAllowed]) => isAllowed === false).map(([blockedMergeMethodName, _]) => {
